@@ -10,6 +10,7 @@ console.log(document.querySelector('.guess').value);
 */
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let highScore = 0;
 let score = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -26,7 +27,10 @@ document.querySelector('.check').addEventListener('click', function () {
 		document.querySelector('.number').textContent = secretNumber;
 
 		//setting highscore as score
-		document.querySelector('.highscore').textContent = score;
+		if (score > highScore) {
+			highScore = score;
+			document.querySelector('.highscore').textContent = highScore;
+		}
 
 		//changin body color
 		document.querySelector('body').style.backgroundColor = '#60b347';
@@ -65,9 +69,9 @@ document.querySelector('.again').addEventListener('click', function () {
 	document.querySelector('body').style.backgroundColor = '#222';
 	document.querySelector('.number').style.width = '15rem';
 	document.querySelector('.score').textContent = score;
-	document.querySelector('.highscore').textContent = 0;
+
 	document.querySelector('.number').textContent = '?';
-	// document.querySelector('.input').textContent=
+
 	//'' because we want empty value
 	document.querySelector('.guess').value = '';
 });
